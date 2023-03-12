@@ -1,0 +1,8 @@
+{
+  "name": "StrongApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "72c36726"
+}
