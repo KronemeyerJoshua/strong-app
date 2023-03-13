@@ -16,27 +16,47 @@
         </ion-toolbar>
       </ion-header>
 
-      <div id="container">
-        <strong class="capitalize">{{ $route.params.id }}</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <barbell-loader />
     </ion-content>
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script>
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import {defineComponent} from "vue";
+import barbellLoader from "@/components/barloader/barbell-loader.vue";
+
+export default defineComponent({
+  Name: 'FolderPage',
+  components: {
+    IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, barbellLoader
+  },
+  data() {
+    return {
+      totalWeight: 45,
+      plateNumber: 0,
+    }
+  },
+  methods: {
+    addWeight() {
+      if (this.plateNumber > 7)
+        return;
+
+      this.plateNumber++;
+      this.totalWeight += 90;
+    },
+    removeWeight() {
+      if (this.plateNumber < 1)
+        return;
+
+      this.plateNumber--;
+      this.totalWeight -= 90;
+    }
+  }
+})
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
 #container strong {
   font-size: 20px;
